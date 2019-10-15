@@ -2,12 +2,13 @@ import logging
 from enum import Enum
 from operations_service import add, subtraction
 import requests
+import json
 
 
 class Operation(Enum):
-    ADD = 1
-    SUBTRACTION = 2
-    MULTIPLICATION = 3
+    ADD = "1" or "add"
+    SUBTRACTION = "2" "substraction"
+    MULTIPLICATION = "3" or "multiplication"
 
 
 def get_numbers():
@@ -36,13 +37,15 @@ def main():
     operation = input("your selection:")
     result = 0
 
-    if Operation.ADD:
+    if Operation.ADD.value == operation or Operation.ADD.name == operation:
         result = add.add_two_number(nb1, nb2)
-    elif Operation.SUBTRACTION:
+    elif Operation.SUBTRACTION.value == operation or Operation.SUBTRACTION.name == operation:
         result = subtraction.subs_two_number(nb1, nb2)
-    elif Operation.MULTIPLICATION:
+    elif Operation.MULTIPLICATION.value == operation or Operation.MULTIPLICATION.name == operation:
         result = "Not implemented yet"
     print("You result is " + str(result))
+    # print("and now: ")
+    # toto()
 
 
 if __name__ == '__main__':
